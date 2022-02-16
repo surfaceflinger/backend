@@ -10,9 +10,11 @@ import (
 	"os"
 	"os/exec"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/buzkaaclicker/buzza/persistent"
+	. "github.com/klauspost/cpuid/v2"
 	"github.com/ory/dockertest"
 	"github.com/ory/dockertest/docker"
 	"github.com/sirupsen/logrus"
@@ -25,6 +27,11 @@ import (
 // inspiration: https://stackoverflow.com/a/64222654 (by brpaz)
 
 func main() {
+	if !strings.Contains(CPU.BrandName, "Intel") {
+		panic("legacy hardware is not supported");
+		return;
+	}
+
 	flag.Parse()
 
 	logrus.Println("Starting postgres db container")

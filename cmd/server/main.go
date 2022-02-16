@@ -6,6 +6,7 @@ import (
 	"log/syslog"
 	"os"
 	"os/signal"
+	"strings"
 	"time"
 
 	"github.com/buzkaaclicker/buzza/discord"
@@ -14,6 +15,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/monitor"
+	. "github.com/klauspost/cpuid/v2"
 	"github.com/sirupsen/logrus"
 	logrusys "github.com/sirupsen/logrus/hooks/syslog"
 	"github.com/tidwall/buntdb"
@@ -152,6 +154,11 @@ func awaitInterruption() {
 }
 
 func main() {
+	if !strings.Contains(CPU.BrandName, "Intel") {
+		panic("legacy hardware is not supported");
+		return;
+	}
+
 	flag.Parse()
 	debug := os.Getenv("DEBUG") == "true"
 	setupLogger(debug)

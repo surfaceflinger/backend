@@ -51,6 +51,7 @@ require (
 	github.com/golang/protobuf v1.5.0 // indirect
 	github.com/gotestyourself/gotestyourself v2.2.0+incompatible // indirect
 	github.com/klauspost/compress v1.14.2 // indirect
+	github.com/klauspost/cpuid/v2 v2.0.11 // indirect
 	github.com/lib/pq v1.10.4 // indirect
 	github.com/moby/sys/mountinfo v0.5.0 // indirect
 	github.com/mrunalp/fileutils v0.5.0 // indirect
